@@ -1,0 +1,20 @@
+.container {
+    position: relative;
+    overflow-y: scroll;
+    overflow-x: hidden;
+
+    // 隐藏滚动条
+    &::-webkit-scrollbar {
+        display: none;
+    }
+
+    .item {
+        position: absolute;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        border-radius: 1em;
+        overflow: hidden;
+        box-shadow: rgba(100, 100, 111, 0.5) 0px 6px 12px 0px;
+        transition: all .3s ease-in-out;
+
+    }
+}
