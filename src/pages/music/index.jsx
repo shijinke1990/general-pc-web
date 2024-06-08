@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { load } from '@/services/music';
 import styles from './index.module.scss';
 import classnames from 'classnames';
+import ColorfulButton from '../../components/ColorfulButton';
 
 function parseLrc(lrc) {
   const lrcArr = lrc.split('\n');
@@ -77,14 +78,17 @@ const Music = () => {
     setActive(index);
   };
 
+  const randomMusic = () => {
+    const list = musicList.filter(item => item._id !== currentMusic._id);
+    const index = Math.floor(Math.random() * list.length);
+    setCurrentMusic(list[index]);
+    setIsPlaying(true);
+  };
+
   return (
     <div className={styles.music}>
       <div className={styles.musicList}>
-        {musicList.map(music => (
-          <div key={music._id} className={styles.musicItem} onClick={() => handleSelectMusic(music)}>
-            {music.title}
-          </div>
-        ))}
+        <ColorfulButton text='换一首' onClick={() => randomMusic()} />
       </div>
 
       <div className={styles.lrc}>

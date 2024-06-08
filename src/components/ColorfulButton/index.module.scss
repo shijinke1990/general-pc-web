@@ -1,0 +1,63 @@
+.button {
+    display: flex;
+    align-items: center;
+    position: relative;
+    gap: 6px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    color: white;
+    font-size: 14px;
+    background: linear-gradient(90deg, #03a9f4, #f441a5, #ffeb3b, #03a9f4);
+    width: 120px;
+    height: 40px;
+    justify-content: center;
+    border-radius: 20px;
+    z-index: 1;
+    font-weight: bold;
+    background-size: 400%;
+    text-shadow: 0 0 5px rgba(0, 0, 0, 0.618);
+
+    .img {
+        width: 20px;
+        height: 20px;
+    }
+
+
+
+
+    &:hover {
+        animation: gradient 8s linear infinite;
+
+        &::before {
+            content: '';
+            position: absolute;
+            width: 120px;
+            height: 40px;
+            top: 0;
+            left: 0;
+            background: linear-gradient(90deg, #03a9f4, #f441a5, #ffeb3b, #03a9f4);
+            border-radius: 40px;
+            z-index: -1;
+            animation: gradient 8s linear infinite;
+            filter: blur(12px);
+            z-index: -1;
+
+
+        }
+
+    }
+
+
+
+
+    @keyframes gradient {
+        from {
+            background-position: 0%;
+        }
+
+        to {
+            background-position: 400%;
+        }
+    }
+}
