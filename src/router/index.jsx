@@ -5,6 +5,7 @@ import Start from '../pages/Start/index';
 import Login from '../pages/login';
 import Music from '../pages/music';
 import Wallpaper from '@pages/wallpaper';
+import Card from '@pages/card';
 
 const router = createBrowserRouter([
   {
@@ -42,6 +43,10 @@ const router = createBrowserRouter([
   {
     path: '/wallpaper',
     element: <Wallpaper />,
+  },
+  {
+    path: '/card',
+    element: <Card />,
   },
   {
     path: '/404',

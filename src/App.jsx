@@ -4,6 +4,8 @@ import routerConfig from './router';
 import './assets/reset.css';
 
 function App() {
+  // 获取浏览器指纹
+
   return (
     <div className='App'>
       <RouterProvider router={routerConfig}></RouterProvider>
