@@ -12,6 +12,7 @@ import Github from '@assets/icons/github.svg?react';
 
 import Wechat from '@assets/icons/wechat.svg?react';
 import Website from '@assets/icons/website.svg?react';
+import html2canvas from 'html2canvas';
 
 import { jsPDF } from 'jspdf';
 
@@ -20,15 +21,26 @@ export default function Resume() {
   const downloadResume = () => {
     //将此组件#body部分保存为pdf
     const body = document.getElementById('body');
-    const pdf = new jsPDF({
-      orientation: 'p',
-      unit: 'mm',
-      format: 'a4',
-    });
-    pdf.html(body, {
-      callback: function (doc) {
-        doc.save('resume.pdf');
-      },
+    const options = {
+      scale: 1,
+      useCORS: true,
+      allowTaint: true,
+      logging: true,
+      width: body.offsetWidth,
+      height: body.offsetHeight,
+    };
+    html2canvas(body, options).then(canvas => {
+      const imgData = canvas.toDataURL('image/png');
+      const pdf = new jsPDF('p', 'mm', 'a4');
+      const pdfWidth = pdf.internal.pageSize.getWidth();
+      const pdfHeight = pdf.internal.pageSize.getHeight();
+      const ratio = Math.min(pdfWidth / canvas.width, pdfHeight / canvas.height);
+      const imgWidth = canvas.width * ratio;
+      const imgHeight = canvas.height * ratio;
+      const xPos = (pdfWidth - imgWidth) / 2;
+      const yPos = (pdfHeight - imgHeight) / 2;
+      pdf.addImage(imgData, 'JPEG', xPos, yPos, imgWidth, imgHeight);
+      pdf.save('download.pdf');
     });
   };
 
