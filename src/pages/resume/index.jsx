@@ -19,10 +19,15 @@ export default function Resume() {
   const container = React.useRef(null);
   const downloadResume = () => {
     //将此组件#body部分保存为pdf
-    const pdf = new jsPDF('p', 'px', 'a4');
-    pdf.html(document.querySelector('#body'), {
-      callback: function (pdf) {
-        pdf.save('resume.pdf');
+    const body = document.getElementById('body');
+    const pdf = new jsPDF({
+      orientation: 'p',
+      unit: 'mm',
+      format: 'a4',
+    });
+    pdf.html(body, {
+      callback: function (doc) {
+        doc.save('resume.pdf');
       },
     });
   };
