@@ -6,6 +6,7 @@ import Login from '../pages/login';
 import Music from '../pages/music';
 import Wallpaper from '@pages/wallpaper';
 import Card from '@pages/card';
+import Resume from '@pages/resume';
 
 const router = createBrowserRouter([
   {
@@ -47,6 +48,11 @@ const router = createBrowserRouter([
   {
     path: '/card',
     element: <Card />,
+  },
+
+  {
+    path: '/resume',
+    element: <Resume />,
   },
   {
     path: '/404',

@@ -3,6 +3,7 @@ import Masonry from '@components/Masonry';
 import { useState } from 'react';
 import { Image } from 'antd';
 import { load } from '@services/wallpapers';
+import styles from './index.module.scss';
 
 import { useEffect } from 'react';
 
@@ -21,7 +22,10 @@ export default function Wallpaper() {
               width: '100%',
               height: 'auto',
             }}
-            src={item.imgUrl}
+            src={item.imgUrl + '?x-oss-process=image/resize,m_lfit,w_500'}
+            preview={{
+              src: item.imgUrl,
+            }}
             key={index}
           />
         ),
@@ -31,16 +35,10 @@ export default function Wallpaper() {
   };
   useEffect(() => {
     handleLoad();
+    document.title = '壁纸';
   }, []);
   return (
-    <div
-      style={{
-        margin: 12,
-        boxSizing: 'border-box',
-        overflow: 'hidden',
-        scroll: 'hidden',
-      }}
-    >
+    <div className={styles.container}>
       <Masonry list={list} gap={12} column={4} />
     </div>
   );

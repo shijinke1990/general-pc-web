@@ -5,6 +5,7 @@ import legacy from '@vitejs/plugin-legacy';
 import { visualizer } from 'rollup-plugin-visualizer';
 import viteCompression from 'vite-plugin-compression';
 import ViteRestart from 'vite-plugin-restart';
+import svgr from 'vite-plugin-svgr';
 
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd());
@@ -12,6 +13,7 @@ export default defineConfig(({ mode }) => {
   return {
     plugins: [
       react(),
+      svgr(),
       visualizer({
         emitFile: false,
         file: 'states.html',

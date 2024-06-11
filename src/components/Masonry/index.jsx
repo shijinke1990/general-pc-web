@@ -62,22 +62,24 @@ const Masonry = ({ list, column = 3, gap = 12 }) => {
   }, [list]);
 
   return (
-    <div
-      className={styles.container}
-      style={{
-        height: containerHeight,
-      }}
-    >
-      {items.map((item, index) => (
-        <div
-          key={index}
-          className={styles.item}
-          style={{ top: item.top, left: item.left, width: item.width, height: item.width * item.radio }}
-        >
-          {item.el}
-        </div>
-      ))}
-    </div>
+    <>
+      <div
+        className={styles.container}
+        style={{
+          height: containerHeight,
+        }}
+      >
+        {items.map((item, index) => (
+          <div
+            key={index}
+            className={styles.item}
+            style={{ top: item.top, left: item.left, width: item.width, height: item.width * item.radio }}
+          >
+            {item.el}
+          </div>
+        ))}
+      </div>
+    </>
   );
 };
 

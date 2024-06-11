@@ -1,0 +1,224 @@
+.container {
+    display: flex;
+    padding: 20px;
+    background-color: #353944;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    min-height: 100%;
+    box-sizing: border-box;
+
+
+    .header {
+        display: flex;
+        justify-content: center;
+    }
+
+    .body {
+        background-color: #fff;
+
+        overflow-y: scroll;
+        height: calc(100vh - 90px);
+
+        width: 900px;
+
+
+
+
+
+        &::-webkit-scrollbar {
+            display: none;
+        }
+
+        .wrapper {
+            display: flex;
+            flex-direction: column;
+            gap: 32px;
+            padding: 50px;
+        }
+
+        .title {
+            display: flex;
+            font-size: 20px;
+            font-weight: bold;
+            color: #00b4b3;
+            filter: grayscale(0.5);
+            line-height: 0.4;
+        }
+
+        .profile {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 12px;
+            user-select: none;
+
+            .avatar {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+
+
+                img {
+                    width: 120px;
+                    height: 120px;
+                    border-radius: 50%;
+                }
+
+
+            }
+
+            .nickname {
+                display: flex;
+                font-size: 24px;
+                font-weight: bold;
+                justify-content: center;
+                align-items: baseline;
+                gap: 2px;
+
+                .state {
+                    font-size: 12px;
+                    color: rgb(69, 65, 65);
+                }
+
+            }
+
+            .introduction {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                gap: 6px;
+                font-family: 'Courier New', Courier, monospace;
+
+                .intention {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    gap: 20px;
+
+                    .item {
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        gap: 6px;
+
+                    }
+                }
+
+                .contact {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    gap: 20px;
+
+
+                    .item {
+                        display: flex;
+                        align-items: center;
+                        gap: 4px;
+
+                        .label {
+                            width: 100px;
+                            font-weight: bold;
+                        }
+
+                        .value {
+                            flex: 1;
+                        }
+
+                        a {
+                            color: #000;
+                            text-decoration: none;
+
+                            &:hover {
+                                color: #000;
+                                text-decoration: underline;
+                            }
+                        }
+                    }
+                }
+            }
+
+
+        }
+
+        .skills {
+            display: flex;
+            flex-direction: column;
+
+            gap: 16px;
+
+            .content {
+                display: flex;
+                flex-direction: column;
+                gap: 8px;
+
+
+                .item {
+                    display: flex;
+                    font-size: 14px;
+                    font-family: 'Courier New', Courier, monospace;
+                    font-weight: 300;
+                }
+            }
+        }
+
+        .experiences {
+            display: flex;
+            flex-direction: column;
+
+            gap: 16px;
+
+            .content {
+                display: flex;
+                flex-direction: column;
+                gap: 8px;
+
+
+
+
+
+                .header {
+                    display: flex;
+                    font-family: 'Courier New', serif, fantasy, sans-serif，monospace，Courier, monospace;
+                    justify-content: space-between;
+
+
+
+                }
+
+                .label {
+                    font-size: 16px;
+
+                }
+
+                .description {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 8px;
+
+                    font-weight: 300;
+
+                    .item {
+                        display: flex;
+                        flex-direction: column;
+                        font-size: 14px;
+                        line-height: 1.4;
+                        font-family: 'Courier New', Courier, monospace;
+
+                    }
+                }
+
+
+
+            }
+        }
+
+
+
+
+    }
+}
