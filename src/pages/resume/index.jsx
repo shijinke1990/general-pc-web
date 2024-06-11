@@ -13,15 +13,28 @@ import Github from '@assets/icons/github.svg?react';
 import Wechat from '@assets/icons/wechat.svg?react';
 import Website from '@assets/icons/website.svg?react';
 
+import { jsPDF } from 'jspdf';
+
 export default function Resume() {
+  const container = React.useRef(null);
+  const downloadResume = () => {
+    //将此组件#body部分保存为pdf
+    const pdf = new jsPDF('p', 'px', 'a4');
+    pdf.html(document.querySelector('#body'), {
+      callback: function (pdf) {
+        pdf.save('resume.pdf');
+      },
+    });
+  };
+
   return (
-    <div className={styles.container}>
+    <div className={styles.container} ref={container}>
       <div className={styles.header}>
-        <Button ghost icon={<DownloadOutlined />} iconPosition='end'>
+        <Button ghost icon={<DownloadOutlined />} iconPosition='end' onClick={downloadResume}>
           下载简历
         </Button>
       </div>
-      <div className={styles.body}>
+      <div className={styles.body} id='body'>
         <div className={styles.wrapper}>
           <div className={styles.profile}>
             <div className={styles.avatar}>
