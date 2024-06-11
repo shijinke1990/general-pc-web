@@ -154,6 +154,71 @@ export default function Resume() {
               <div className={styles.item}>熟悉低代码开发</div>
             </div>
           </div>
+          <div className={styles.skills}>
+            <div className={styles.title}>专业技能</div>
+            <div className={styles.content}>
+              <div className={styles.item}>熟悉HTML5/CSS3/Javascript</div>
+              <div className={styles.item}>熟悉http协议、常见数据结构与算法</div>
+              <div className={styles.item}>熟练掌握Vue/React</div>
+              <div className={styles.item}>熟悉nodejs，有nodejs服务端开发经验</div>
+              <div className={styles.item}>熟悉前端模块化、编译、构建，熟悉webpack/vite常见用法；</div>
+              <div className={styles.item}>熟悉SSR服务端渲染，对搜索引擎优化有一定经验</div>
+              <div className={styles.item}>熟悉使用 Git 协作开发；</div>
+              <div className={styles.item}>熟悉低代码开发</div>
+            </div>
+          </div>
+          <div className={styles.skills}>
+            <div className={styles.title}>专业技能</div>
+            <div className={styles.content}>
+              <div className={styles.item}>熟悉HTML5/CSS3/Javascript</div>
+              <div className={styles.item}>熟悉http协议、常见数据结构与算法</div>
+              <div className={styles.item}>熟练掌握Vue/React</div>
+              <div className={styles.item}>熟悉nodejs，有nodejs服务端开发经验</div>
+              <div className={styles.item}>熟悉前端模块化、编译、构建，熟悉webpack/vite常见用法；</div>
+              <div className={styles.item}>熟悉SSR服务端渲染，对搜索引擎优化有一定经验</div>
+              <div className={styles.item}>熟悉使用 Git 协作开发；</div>
+              <div className={styles.item}>熟悉低代码开发</div>
+            </div>
+          </div>
+          <div className={styles.skills}>
+            <div className={styles.title}>专业技能</div>
+            <div className={styles.content}>
+              <div className={styles.item}>熟悉HTML5/CSS3/Javascript</div>
+              <div className={styles.item}>熟悉http协议、常见数据结构与算法</div>
+              <div className={styles.item}>熟练掌握Vue/React</div>
+              <div className={styles.item}>熟悉nodejs，有nodejs服务端开发经验</div>
+              <div className={styles.item}>熟悉前端模块化、编译、构建，熟悉webpack/vite常见用法；</div>
+              <div className={styles.item}>熟悉SSR服务端渲染，对搜索引擎优化有一定经验</div>
+              <div className={styles.item}>熟悉使用 Git 协作开发；</div>
+              <div className={styles.item}>熟悉低代码开发</div>
+            </div>
+          </div>
+          <div className={styles.skills}>
+            <div className={styles.title}>专业技能</div>
+            <div className={styles.content}>
+              <div className={styles.item}>熟悉HTML5/CSS3/Javascript</div>
+              <div className={styles.item}>熟悉http协议、常见数据结构与算法</div>
+              <div className={styles.item}>熟练掌握Vue/React</div>
+              <div className={styles.item}>熟悉nodejs，有nodejs服务端开发经验</div>
+              <div className={styles.item}>熟悉前端模块化、编译、构建，熟悉webpack/vite常见用法；</div>
+              <div className={styles.item}>熟悉SSR服务端渲染，对搜索引擎优化有一定经验</div>
+              <div className={styles.item}>熟悉使用 Git 协作开发；</div>
+              <div className={styles.item}>熟悉低代码开发</div>
+            </div>
+          </div>
+          <div className={styles.skills}>
+            <div className={styles.title}>专业技能</div>
+            <div className={styles.content}>
+              <div className={styles.item}>熟悉HTML5/CSS3/Javascript</div>
+              <div className={styles.item}>熟悉http协议、常见数据结构与算法</div>
+              <div className={styles.item}>熟练掌握Vue/React</div>
+              <div className={styles.item}>熟悉nodejs，有nodejs服务端开发经验</div>
+              <div className={styles.item}>熟悉前端模块化、编译、构建，熟悉webpack/vite常见用法；</div>
+              <div className={styles.item}>熟悉SSR服务端渲染，对搜索引擎优化有一定经验</div>
+              <div className={styles.item}>熟悉使用 Git 协作开发；</div>
+              <div className={styles.item}>熟悉低代码开发</div>
+            </div>
+          </div>
           <div className={styles.experiences}>
             <div className={styles.title}>工作经历</div>
             <div className={styles.content}>
