@@ -19,17 +19,16 @@ import { jsPDF } from 'jspdf';
 export default function Resume() {
   const container = React.useRef(null);
   const downloadResume = () => {
-    //将此组件#body部分保存为pdf
-    const body = document.getElementById('body');
+    const wrapper = document.getElementById('wrapper');
     const options = {
-      scale: 1,
+      scale: 2,
       useCORS: true,
       allowTaint: true,
       logging: true,
-      width: body.offsetWidth,
-      height: body.offsetHeight,
+      width: wrapper.offsetWidth,
+      height: wrapper.offsetHeight,
     };
-    html2canvas(body, options).then(canvas => {
+    html2canvas(wrapper, options).then(canvas => {
       const imgData = canvas.toDataURL('image/png');
       const pdf = new jsPDF('p', 'mm', 'a4');
       const pdfWidth = pdf.internal.pageSize.getWidth();
@@ -39,7 +38,29 @@ export default function Resume() {
       const imgHeight = canvas.height * ratio;
       const xPos = (pdfWidth - imgWidth) / 2;
       const yPos = (pdfHeight - imgHeight) / 2;
-      pdf.addImage(imgData, 'JPEG', xPos, yPos, imgWidth, imgHeight);
+      let currentPage = 1;
+      console.log('imgWidth', imgWidth);
+      console.log('imgHeight', imgHeight);
+      console.log('pdfWidth', pdfWidth);
+      console.log('pdfHeight', pdfHeight);
+
+      let yPosition = yPos;
+      const addPage = () => {
+        pdf.addPage();
+        currentPage++;
+        yPosition = yPos;
+      };
+      const addImageToPage = () => {
+        pdf.addImage(imgData, 'JPEG', xPos, yPosition, imgWidth, imgHeight);
+      };
+      const checkPageOverflow = () => {
+        const remainingHeight = pdfHeight - yPosition;
+        if (remainingHeight < imgHeight) {
+          addPage();
+        }
+      };
+      addImageToPage();
+      checkPageOverflow();
       pdf.save('download.pdf');
     });
   };
@@ -51,8 +72,8 @@ export default function Resume() {
           下载简历
         </Button>
       </div>
-      <div className={styles.body} id='body'>
-        <div className={styles.wrapper}>
+      <div className={styles.body}>
+        <div className={styles.wrapper} id='wrapper'>
           <div className={styles.profile}>
             <div className={styles.avatar}>
               <img src='https://avatars.githubusercontent.com/u/21263805?v=4' alt='avatar' />
@@ -206,17 +227,18 @@ export default function Resume() {
               <div className={styles.item}>熟悉低代码开发</div>
             </div>
           </div>
-          <div className={styles.skills}>
-            <div className={styles.title}>专业技能</div>
+          <div className={styles.experiences}>
+            <div className={styles.title}>工作经历</div>
             <div className={styles.content}>
-              <div className={styles.item}>熟悉HTML5/CSS3/Javascript</div>
-              <div className={styles.item}>熟悉http协议、常见数据结构与算法</div>
-              <div className={styles.item}>熟练掌握Vue/React</div>
-              <div className={styles.item}>熟悉nodejs，有nodejs服务端开发经验</div>
-              <div className={styles.item}>熟悉前端模块化、编译、构建，熟悉webpack/vite常见用法；</div>
-              <div className={styles.item}>熟悉SSR服务端渲染，对搜索引擎优化有一定经验</div>
-              <div className={styles.item}>熟悉使用 Git 协作开发；</div>
-              <div className={styles.item}>熟悉低代码开发</div>
+              <div className={styles.header}>
+                <div className={styles.time}>2019.07-2021.07</div>
+                <div className={styles.company}>杭州悦途科技有限公司</div>
+              </div>
+              <div className={styles.label}>前端工程师</div>
+              <div className={styles.description}>
+                <div className={styles.item}>负责公司前端项目的开发与维护；</div>
+                <div className={styles.item}>负责公司内部低代码平台的开发与维护；</div>
+              </div>
             </div>
           </div>
           <div className={styles.experiences}>
@@ -233,6 +255,35 @@ export default function Resume() {
               </div>
             </div>
           </div>
+          <div className={styles.experiences}>
+            <div className={styles.title}>工作经历</div>
+            <div className={styles.content}>
+              <div className={styles.header}>
+                <div className={styles.time}>2019.07-2021.07</div>
+                <div className={styles.company}>杭州悦途科技有限公司</div>
+              </div>
+              <div className={styles.label}>前端工程师</div>
+              <div className={styles.description}>
+                <div className={styles.item}>负责公司前端项目的开发与维护；</div>
+                <div className={styles.item}>负责公司内部低代码平台的开发与维护；</div>
+              </div>
+            </div>
+          </div>
+          <div className={styles.experiences}>
+            <div className={styles.title}>工作经历</div>
+            <div className={styles.content}>
+              <div className={styles.header}>
+                <div className={styles.time}>2019.07-2021.07</div>
+                <div className={styles.company}>杭州悦途科技有限公司</div>
+              </div>
+              <div className={styles.label}>前端工程师</div>
+              <div className={styles.description}>
+                <div className={styles.item}>负责公司前端项目的开发与维护；</div>
+                <div className={styles.item}>负责公司内部低代码平台的开发与维护；</div>
+              </div>
+            </div>
+          </div>
+
           <div className={styles.experiences}>
             <div className={styles.title}>项目经历</div>
             <div className={styles.content}>
