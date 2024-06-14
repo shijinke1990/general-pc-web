@@ -1,18 +1,14 @@
 .box {
     display: flex;
     position: relative;
-    width: 1000px;
-    min-width: 1000px;
-    min-height: 600px;
-    height: 600px;
+    height: 100vh;
     padding: 25px;
     background-color: #ecf0f3;
     box-shadow: 10px 10px 10px #d1d9e6, -10px -10px 10px #f9f9f9;
     border-radius: 12px;
     overflow: hidden;
+    box-sizing: border-box;
 }
-
-
 
 .container {
     display: flex;
@@ -20,7 +16,7 @@
     align-items: center;
     position: absolute;
     top: 0;
-    width: 600px;
+    width: calc(100% - 400px);
     height: 100%;
     padding: 0 25px;
     background-color: #ecf0f3;
@@ -58,7 +54,7 @@
 }
 
 .code_input {
-    width: 318px;
+
 
 
     padding-left: 25px;
@@ -114,7 +110,7 @@
 
 .a-container {
     z-index: 100;
-    left: calc(100% - 640px);
+
 }
 
 .b-container {
@@ -190,12 +186,14 @@
     left: calc(100% - 400px);
     transition: 1.25s;
     transform-origin: left;
+
 }
 
 .is-txl {
-    left: 0;
+
     transition: 1.25s;
     transform-origin: right;
+
 }
 
 .is-z {
@@ -212,6 +210,7 @@
 
 .is-gx {
     animation: is-gx 1.25s;
+
 }
 
 .txr {
@@ -226,4 +225,8 @@
 
 .form_button {
     margin-top: 50px;
+}
+
+.ml {
+    margin-left: 382px;
 }

@@ -16,15 +16,7 @@
 
     .body {
         background-color: #fff;
-
-        // overflow-y: scroll;
-        // height: calc(100vh - 100px);
-
         width: 900px;
-
-
-
-
 
         &::-webkit-scrollbar {
             display: none;
@@ -61,11 +53,6 @@
                 align-items: center;
 
 
-                img {
-                    width: 120px;
-                    height: 120px;
-                    border-radius: 50%;
-                }
 
 
             }
@@ -178,7 +165,14 @@
                 gap: 8px;
 
 
-
+                .item {
+                    display: flex;
+                    flex-direction: column;
+                    font-size: 14px;
+                    line-height: 1.4;
+                    font-family: 'Courier New', Courier, monospace;
+                    gap: 4px;
+                }
 
 
                 .header {
@@ -204,14 +198,7 @@
 
                     font-weight: 300;
 
-                    .item {
-                        display: flex;
-                        flex-direction: column;
-                        font-size: 14px;
-                        line-height: 1.4;
-                        font-family: 'Courier New', Courier, monospace;
 
-                    }
                 }
 
 

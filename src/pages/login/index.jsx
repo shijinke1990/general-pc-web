@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styles from './index.module.scss';
 import classnames from 'classnames';
-import { Button, Form, Input, Space } from 'antd';
+import { Button, Form, Input } from 'antd';
 const Login = () => {
   const [isSignIn, setIsSignIn] = useState(true);
 
@@ -17,6 +17,7 @@ const Login = () => {
           styles['a-container'],
           {
             [styles['is-txl']]: !isSignIn,
+            [styles['ml']]: isSignIn,
           },
         ])}
         id='a-container'
