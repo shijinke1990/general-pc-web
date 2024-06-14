@@ -2,11 +2,44 @@ import React, { useState } from 'react';
 import styles from './index.module.scss';
 import classnames from 'classnames';
 import { Button, Form, Input } from 'antd';
+import { generatePhoneCode, loginViaPhone, loginViaEmail } from '@services/users';
+
 const Login = () => {
   const [isSignIn, setIsSignIn] = useState(true);
-
+  const [seconds, setSeconds] = useState(0);
+  const [form] = Form.useForm();
   const switchForm = () => {
     setIsSignIn(!isSignIn);
+  };
+
+  const handleGeneratePhoneCode = async () => {
+    const phone = form.getFieldValue('phone');
+    const res = await generatePhoneCode({ phone });
+    if (res) {
+      setSeconds(60);
+      const timer = setInterval(() => {
+        setSeconds(s => {
+          if (s <= 0) {
+            clearInterval(timer);
+            return 0;
+          }
+          return s - 1;
+        });
+      }, 1000);
+    }
+  };
+
+  const handleLogin = async () => {
+    const values = form.getFieldsValue();
+    console.log('values', values);
+    if (values.phone && values.code) {
+      const res = await loginViaPhone(values);
+      console.log('res', res);
+    }
+    if (values.email && values.code) {
+      const res = await loginViaEmail(values);
+      console.log('res', res);
+    }
   };
 
   return (
@@ -23,50 +56,67 @@ const Login = () => {
         id='a-container'
       >
         <Form
+          form={form}
           className={styles.form}
           initialValues={{
             username: '',
             password: '',
           }}
         >
-          <h2 className={classnames(styles.form_title, styles.title)}>{isSignIn ? '登录' : '注册'}</h2>
-          <Form.Item
-            name='username'
-            rules={[
-              {
-                required: true,
-                message: '用户名不能为空',
-              },
-            ]}
-          >
-            <Input className={styles.form_input} placeholder='用户名' />
-          </Form.Item>
-          <Form.Item
-            name='password'
-            rules={[
-              {
-                required: true,
-                message: '密码不能为空',
-              },
-            ]}
-          >
-            <Input.Password className={styles.form_input} placeholder='密码' />
-          </Form.Item>
-          {!isSignIn && (
+          <h2 className={classnames(styles.form_title, styles.title)}>{isSignIn ? '手机号登录' : '邮箱登录'}</h2>
+          {isSignIn ? (
             <Form.Item
-              name='repassword'
+              name='email'
               rules={[
                 {
                   required: true,
-                  message: '重复密码不能为空',
+                  message: '邮箱不能为空',
                 },
               ]}
             >
-              <Input.Password className={styles.form_input} placeholder='重复密码' />
+              <Input className={styles.form_input} placeholder='邮箱' />
+            </Form.Item>
+          ) : (
+            <Form.Item
+              name='phone'
+              rules={[
+                {
+                  required: true,
+                  message: '手机号不能为空',
+                },
+              ]}
+            >
+              <Input className={styles.form_input} placeholder='手机号' />
             </Form.Item>
           )}
-          <Button type='primary' className={classnames(styles.form_button, styles.button, styles.submit)}>
-            {isSignIn ? '登录' : '注册'}
+
+          <Form.Item
+            name='code'
+            rules={[
+              {
+                required: true,
+                message: '验证码不能为空',
+              },
+            ]}
+          >
+            <div className={styles.wrapper}>
+              <Input className={styles.form_code} placeholder='验证码' />
+              {seconds > 0 ? (
+                <Button className={styles.form_small_button}>{seconds}秒后重新获取</Button>
+              ) : (
+                <Button className={styles.form_small_button} onClick={handleGeneratePhoneCode}>
+                  获取验证码
+                </Button>
+              )}
+            </div>
+          </Form.Item>
+
+          <Button
+            onClick={handleLogin}
+            type='primary'
+            className={classnames(styles.form_button, styles.button, styles.submit)}
+          >
+            登录
           </Button>
         </Form>
       </div>
@@ -102,17 +152,17 @@ const Login = () => {
         {isSignIn ? (
           <div className={classnames(styles.switch_container, styles['right-panel-active'])} id='switch-c1'>
             <div className={classnames(styles.switch_title, styles.title)} style={{ letterSpacing: 0 }}>
-              欢迎回来！
+              你好，新朋友
             </div>
 
             <p className={classnames(styles.switch_description, styles.description)}>
-              或者，还没有账号？点击下方前往注册吧！
+              或者，你习惯使用邮箱登录？点击下方切换！
             </p>
             <Button
               className={classnames(styles.switch_button, styles.button, styles['switch-btn'])}
               onClick={switchForm}
             >
-              注册
+              邮箱登录
             </Button>
           </div>
         ) : (
@@ -121,13 +171,13 @@ const Login = () => {
               你好，新朋友
             </div>
             <p className={classnames(styles.switch_description, styles.description)}>
-              或者，已经有账号了嘛，点击下方去登录账号吧！
+              或者，你习惯使用手机号登录？点击下方切换！
             </p>
             <Button
               className={classnames(styles.switch_button, styles.button, styles['switch-btn'])}
               onClick={switchForm}
             >
-              登录
+              手机号登录
             </Button>
           </div>
         )}
