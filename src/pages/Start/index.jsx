@@ -7,21 +7,16 @@ gsap.registerPlugin(ScrollTrigger);
 export default function MyComponent() {
   const myElement1 = useRef(null);
   const myElement2 = useRef(null);
-  const str = '南山南北秋悲正常办公两不误';
 
   useEffect(() => {
-    gsap.to(myElement1.current, {
-      rotate: '180deg',
-      duration: 10,
-      x: 0,
-      y: 0,
-    });
-    gsap.from(myElement2.current, {
-      rotate: '180deg',
-      duration: 10,
-      x: 800,
-      y: 600,
-    });
+    const tl = gsap.timeline();
+
+    tl.to(myElement1.current, { x: 900, rotate: '720deg', duration: 5 })
+      .to(myElement2.current, { x: -900, rotate: '720deg', duration: 5 })
+      .to(myElement1.current, { x: 0, rotate: '720deg', duration: 5 })
+      .to(myElement2.current, { x: 0, rotate: '720deg', duration: 5 });
+
+    // myElement1.current.to({ x: 100 }, { duration: 1 });
   }, []);
 
   return (
@@ -32,27 +27,19 @@ export default function MyComponent() {
         width: '100vw',
         justifyContent: 'center',
         alignItems: 'center',
+        gap: '200px',
       }}
     >
-      {str.split('').map((item, index) => {
-        return (
-          <span
-            key={index}
-            style={{
-              display: 'inline-block',
-              fontSize: '20px',
-            }}
-          >
-            {item}
-          </span>
-        );
-      })}
       <div
         ref={myElement1}
         style={{
           width: '100px',
           height: '100px',
           backgroundColor: 'blue',
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          color: 'white',
         }}
       >
         王安琪
@@ -63,6 +50,10 @@ export default function MyComponent() {
           width: '100px',
           height: '100px',
           backgroundColor: 'green',
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          color: 'white',
         }}
       >
         胡奕
