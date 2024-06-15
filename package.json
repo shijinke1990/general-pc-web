@@ -17,6 +17,7 @@
     "axios": "^1.7.2",
     "classnames": "^2.5.1",
     "copy-to-clipboard": "^3.3.3",
+    "gsap": "^3.12.5",
     "html2canvas": "^1.4.1",
     "jspdf": "^2.5.1",
     "mitt": "^3.0.1",

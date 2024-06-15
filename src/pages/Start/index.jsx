@@ -1,70 +1,72 @@
-import React, { useEffect, useState } from 'react';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { useEffect, useRef } from 'react';
 
-import Header from '@components/Header';
-import { Carousel, Image } from 'antd';
-import Partners from '@components/Partners';
-import BeiAn from '@components/BeiAn';
-import PromiseList from '@components/PromiseList';
-import CustomerStories from '@components/CustomerStories';
-import ProductList from '@components/ProductList';
-// import { load } from '@api/site';
+gsap.registerPlugin(ScrollTrigger);
 
-import SiteContext from '@context/SiteContext';
-import useDefer from '@hooks/useDefer';
+export default function MyComponent() {
+  const myElement1 = useRef(null);
+  const myElement2 = useRef(null);
+  const str = '南山南北秋悲正常办公两不误';
 
-const Start = () => {
-  const [site, setSite] = useState(null);
-  // const handleLoad = () => {
-  //     load().then((res) => {
-  //         setSite(res?.data);
-  //     });
-  // };
-  // useEffect(() => {
-  //     handleLoad();
-  // }, []);
-  const defer = useDefer();
+  useEffect(() => {
+    gsap.to(myElement1.current, {
+      rotate: '180deg',
+      duration: 10,
+      x: 0,
+      y: 0,
+    });
+    gsap.from(myElement2.current, {
+      rotate: '180deg',
+      duration: 10,
+      x: 800,
+      y: 600,
+    });
+  }, []);
+
   return (
-    <>
-      <SiteContext.Provider value={{ site }}>
-        <Header></Header>
-        <Carousel autoplay autoplaySpeed={2000} effect='fade'>
-          {site?.banners?.map((item, index) => {
-            return (
-              defer(index * 100) && (
-                <div key={index}>
-                  <Image
-                    style={{
-                      objectFit: 'cover',
-                    }}
-                    width={1920}
-                    height={520}
-                    src={item.imgUrl}
-                    preview={false}
-                    placeholder={
-                      <Image
-                        width={1920}
-                        height={520}
-                        preview={false}
-                        style={{
-                          objectFit: 'cover',
-                        }}
-                        src={item.imgUrl + '?x-oss-process=image/resize,m_lfit,w_720,h_195'}
-                      />
-                    }
-                  />
-                </div>
-              )
-            );
-          })}
-        </Carousel>
-        {/* {defer(50) && <ProductList></ProductList>}
-                {defer(150) && <CustomerStories></CustomerStories>}
-                {defer(200) && <Partners></Partners>}
-                {defer(250) && <PromiseList></PromiseList>}
-                {defer(300) && <BeiAn></BeiAn>} */}
-      </SiteContext.Provider>
-    </>
+    <div
+      style={{
+        height: '100vh',
+        display: 'flex',
+        width: '100vw',
+        justifyContent: 'center',
+        alignItems: 'center',
+      }}
+    >
+      {str.split('').map((item, index) => {
+        return (
+          <span
+            key={index}
+            style={{
+              display: 'inline-block',
+              fontSize: '20px',
+            }}
+          >
+            {item}
+          </span>
+        );
+      })}
+      <div
+        ref={myElement1}
+        style={{
+          width: '100px',
+          height: '100px',
+          backgroundColor: 'blue',
+        }}
+      >
+        王安琪
+      </div>
+      <div
+        ref={myElement2}
+        style={{
+          width: '100px',
+          height: '100px',
+          backgroundColor: 'green',
+        }}
+      >
+        胡奕
+      </div>
+    </div>
   );
-};
-
-export default Start;
+}

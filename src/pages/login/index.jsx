@@ -2,43 +2,54 @@ import React, { useState } from 'react';
 import styles from './index.module.scss';
 import classnames from 'classnames';
 import { Button, Form, Input } from 'antd';
-import { generatePhoneCode, loginViaPhone, loginViaEmail } from '@services/users';
+import { generatePhoneCode, generateEmailCode, loginViaPhone, loginViaEmail } from '@services/users';
+import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
   const [isSignIn, setIsSignIn] = useState(true);
   const [seconds, setSeconds] = useState(0);
   const [form] = Form.useForm();
+  const navigateTo = useNavigate();
   const switchForm = () => {
     setIsSignIn(!isSignIn);
   };
 
-  const handleGeneratePhoneCode = async () => {
-    const phone = form.getFieldValue('phone');
-    const res = await generatePhoneCode({ phone });
-    if (res) {
-      setSeconds(60);
-      const timer = setInterval(() => {
-        setSeconds(s => {
-          if (s <= 0) {
-            clearInterval(timer);
-            return 0;
-          }
-          return s - 1;
-        });
-      }, 1000);
+  const handleGenerateCode = async () => {
+    const values = form.getFieldsValue();
+    if (values.email) {
+      await generateEmailCode({ email: values.email });
     }
+    if (values.phone) {
+      await generatePhoneCode({ phone: values.phone });
+    }
+
+    setSeconds(60);
+    const timer = setInterval(() => {
+      setSeconds(s => {
+        if (s <= 0) {
+          clearInterval(timer);
+          return 0;
+        }
+        return s - 1;
+      });
+    }, 1000);
   };
 
-  const handleLogin = async () => {
+  const handleLogin = async e => {
     const values = form.getFieldsValue();
-    console.log('values', values);
-    if (values.phone && values.code) {
+    if (values.phone && values.verificationCode) {
       const res = await loginViaPhone(values);
       console.log('res', res);
+      const { token } = res;
+      localStorage.setItem('token', token);
+      navigateTo('/');
     }
-    if (values.email && values.code) {
+    if (values.email && values.verificationCode) {
       const res = await loginViaEmail(values);
       console.log('res', res);
+      const { token } = res;
+      localStorage.setItem('token', token);
+      navigateTo('/');
     }
   };
 
@@ -55,28 +66,9 @@ const Login = () => {
         ])}
         id='a-container'
       >
-        <Form
-          form={form}
-          className={styles.form}
-          initialValues={{
-            username: '',
-            password: '',
-          }}
-        >
+        <Form form={form} className={styles.form}>
           <h2 className={classnames(styles.form_title, styles.title)}>{isSignIn ? '手机号登录' : '邮箱登录'}</h2>
           {isSignIn ? (
-            <Form.Item
-              name='email'
-              rules={[
-                {
-                  required: true,
-                  message: '邮箱不能为空',
-                },
-              ]}
-            >
-              <Input className={styles.form_input} placeholder='邮箱' />
-            </Form.Item>
-          ) : (
             <Form.Item
               name='phone'
               rules={[
@@ -88,10 +80,22 @@ const Login = () => {
             >
               <Input className={styles.form_input} placeholder='手机号' />
             </Form.Item>
+          ) : (
+            <Form.Item
+              name='email'
+              rules={[
+                {
+                  required: true,
+                  message: '邮箱不能为空',
+                },
+              ]}
+            >
+              <Input className={styles.form_input} placeholder='邮箱' />
+            </Form.Item>
           )}
 
           <Form.Item
-            name='code'
+            name='verificationCode'
             rules={[
               {
                 required: true,
@@ -104,20 +108,22 @@ const Login = () => {
               {seconds > 0 ? (
                 <Button className={styles.form_small_button}>{seconds}秒后重新获取</Button>
               ) : (
-                <Button className={styles.form_small_button} onClick={handleGeneratePhoneCode}>
+                <Button className={styles.form_small_button} onClick={handleGenerateCode}>
                   获取验证码
                 </Button>
               )}
             </div>
           </Form.Item>
-
-          <Button
-            onClick={handleLogin}
-            type='primary'
-            className={classnames(styles.form_button, styles.button, styles.submit)}
-          >
-            登录
-          </Button>
+          <Form.Item>
+            <Button
+              type='primary'
+              onClick={handleLogin}
+              htmlType='submit'
+              className={classnames(styles.form_button, styles.button, styles.submit)}
+            >
+              登录
+            </Button>
+          </Form.Item>
         </Form>
       </div>
       <div

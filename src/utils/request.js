@@ -28,10 +28,11 @@ service.interceptors.response.use(
   res => {
     message.destroy();
     message.error(res.response.data.message || '请求错误');
-    if (res.response.status === 401 || res.response.status === 403) {
-      localStorage.removeItem('token');
-      window.location.href = '/login';
-    }
+    console.log('res', res);
+    // if (res.response.status === 401 || res.response.status === 403) {
+    //   localStorage.removeItem('token');
+    //   window.location.href = '/login';
+    // }
     // if (res.response.status === 500) {
     //   window.location.href = '/500';
     // }

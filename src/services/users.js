@@ -18,15 +18,16 @@ export const load = async data => {
 export const generatePhoneCode = async data => {
   return request({
     method: 'get',
-    url: `/users/${data.phone}/code`,
+    url: `/users/${data.phone}/phoneCode`,
     data,
   });
 };
 
 export const generateEmailCode = async data => {
+  console.log('data', data);
   return request({
     method: 'get',
-    url: `/users/${data.email}/code`,
+    url: `/users/${data.email}/emailCode`,
     data,
   });
 };
