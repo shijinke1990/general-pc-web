@@ -15,8 +15,6 @@ export default function MyComponent() {
       .to(myElement2.current, { x: -900, rotate: '720deg', duration: 5 })
       .to(myElement1.current, { x: 0, rotate: '720deg', duration: 5 })
       .to(myElement2.current, { x: 0, rotate: '720deg', duration: 5 });
-
-    // myElement1.current.to({ x: 100 }, { duration: 1 });
   }, []);
 
   return (
