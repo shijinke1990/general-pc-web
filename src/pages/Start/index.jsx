@@ -1,61 +1,33 @@
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useEffect, useRef } from 'react';
+import './demo.scss';
 
 gsap.registerPlugin(ScrollTrigger);
 
 export default function MyComponent() {
-  const myElement1 = useRef(null);
-  const myElement2 = useRef(null);
-
   useEffect(() => {
-    const tl = gsap.timeline();
-
-    tl.to(myElement1.current, { x: 900, rotate: '720deg', duration: 5 })
-      .to(myElement2.current, { x: -900, rotate: '720deg', duration: 5 })
-      .to(myElement1.current, { x: 0, rotate: '720deg', duration: 5 })
-      .to(myElement2.current, { x: 0, rotate: '720deg', duration: 5 });
+    const tl = gsap.timeline({
+      repeat: -1,
+      repeatDelay: 1,
+    });
+    tl.from('.gf', { y: 150, stagger: 0.5, duration: 2, opacity: 0 }).to('.gf', {
+      y: 0,
+      stagger: 0.5,
+      duration: 2,
+      opacity: 0,
+      scale: 10,
+    });
+    tl;
   }, []);
 
   return (
-    <div
-      style={{
-        height: '100vh',
-        display: 'flex',
-        width: '100vw',
-        justifyContent: 'center',
-        alignItems: 'center',
-        gap: '200px',
-      }}
-    >
-      <div
-        ref={myElement1}
-        style={{
-          width: '100px',
-          height: '100px',
-          backgroundColor: 'blue',
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center',
-          color: 'white',
-        }}
-      >
-        王安琪
-      </div>
-      <div
-        ref={myElement2}
-        style={{
-          width: '100px',
-          height: '100px',
-          backgroundColor: 'green',
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center',
-          color: 'white',
-        }}
-      >
-        胡奕
-      </div>
+    <div className='gf_container'>
+      <h1 className='gf'></h1>
+      <h1 className='gf'></h1>
+      <h1 className='gf'></h1>
+      <h1 className='gf'></h1>
+      <h1 className='gf'></h1>
     </div>
   );
 }
