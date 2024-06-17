@@ -9,6 +9,7 @@ import Card from '@pages/card';
 import Resume from '@pages/resume';
 import Article from '@pages/article';
 import ArticleDetail from '@pages/article/ArticleDetail';
+import Note from '@pages/note';
 const router = createBrowserRouter([
   {
     path: '/',
@@ -65,6 +66,10 @@ const router = createBrowserRouter([
   {
     path: '/article',
     element: <ArticleDetail />,
+  },
+  {
+    path: '/note',
+    element: <Note />,
   },
   {
     path: '/404',
