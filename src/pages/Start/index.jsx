@@ -1,33 +1,20 @@
-import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { useEffect, useRef } from 'react';
-import './demo.scss';
+import React, { useEffect, useState } from 'react';
 
-gsap.registerPlugin(ScrollTrigger);
+import ProductList from './ProductList';
+import styles from './index.module.scss';
 
-export default function MyComponent() {
-  useEffect(() => {
-    const tl = gsap.timeline({
-      repeat: -1,
-      repeatDelay: 1,
-    });
-    tl.from('.gf', { y: 150, stagger: 0.5, duration: 2, opacity: 0 }).to('.gf', {
-      y: 0,
-      stagger: 0.5,
-      duration: 2,
-      opacity: 0,
-      scale: 10,
-    });
-    tl;
-  }, []);
-
+const Start = () => {
   return (
-    <div className='gf_container'>
-      <h1 className='gf'></h1>
-      <h1 className='gf'></h1>
-      <h1 className='gf'></h1>
-      <h1 className='gf'></h1>
-      <h1 className='gf'></h1>
+    <div className={styles.start}>
+      <img className={styles.logo} src='/logo.png' alt='logo' />
+      <ProductList></ProductList>
+      <div className={styles.beiAn}>
+        <a href='http://beian.miit.gov.cn' target='_blank' rel='noopener noreferrer'>
+          88888
+        </a>
+      </div>
     </div>
   );
-}
+};
+
+export default Start;

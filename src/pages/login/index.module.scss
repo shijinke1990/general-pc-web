@@ -116,6 +116,7 @@
 
 .title {
     font-size: 34px;
+
     font-weight: 700;
     line-height: 3;
     color: #181818;
@@ -124,8 +125,10 @@
 
 .description {
     font-size: 14px;
+    width: 320px;
     letter-spacing: 0.25px;
     text-align: center;
+    line-height: 1.5rem;
 }
 
 .button {

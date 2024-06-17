@@ -1,5 +1,58 @@
-.img {
-    object-fit: cover;
-    height: 520px;
+.start {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    height: 100vh;
     width: 100vw;
+    background-image: url(http://aiyouyou.oss-cn-hangzhou.aliyuncs.com/19000475aa5ea2c8a733803eac0eea66667e79f2fa2.jpg);
+    background-size: cover;
+
+
+
+    &::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100vh;
+        width: 100vw;
+        background-color: rgba(0, 0, 0, 0.5);
+
+    }
+
+    .logo {
+
+        width: 520px;
+        filter: drop-shadow(4px 4px 30px rgba(158, 14, 48, 0.2));
+        z-index: 9;
+
+    }
+
+    .beiAn {
+
+        display: flex;
+
+        color: #fff;
+        padding: 28px;
+        justify-content: space-around;
+        align-items: center;
+        gap: 50px;
+        z-index: 9;
+
+        a {
+            text-decoration: none;
+            color: #EEE;
+            font-size: 20px;
+
+            &:hover {
+                color: #fff;
+                font-size: 21px;
+            }
+        }
+    }
+
+
+
 }

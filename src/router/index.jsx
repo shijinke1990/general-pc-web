@@ -7,7 +7,8 @@ import Music from '../pages/music';
 import Wallpaper from '@pages/wallpaper';
 import Card from '@pages/card';
 import Resume from '@pages/resume';
-
+import Article from '@pages/article';
+import ArticleDetail from '@pages/article/ArticleDetail';
 const router = createBrowserRouter([
   {
     path: '/',
@@ -49,10 +50,21 @@ const router = createBrowserRouter([
     path: '/card',
     element: <Card />,
   },
-
+  {
+    path: '/resume',
+    element: <Login />,
+  },
   {
     path: '/resume/:id',
     element: <Resume />,
+  },
+  {
+    path: '/article/:id',
+    element: <Article />,
+  },
+  {
+    path: '/article',
+    element: <ArticleDetail />,
   },
   {
     path: '/404',

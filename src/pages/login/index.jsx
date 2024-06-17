@@ -158,11 +158,11 @@ const Login = () => {
         {isSignIn ? (
           <div className={classnames(styles.switch_container, styles['right-panel-active'])} id='switch-c1'>
             <div className={classnames(styles.switch_title, styles.title)} style={{ letterSpacing: 0 }}>
-              你好，新朋友
+              您好，招聘官
             </div>
 
             <p className={classnames(styles.switch_description, styles.description)}>
-              或者，你习惯使用邮箱登录？点击下方切换！
+              出于隐私保护，查看简历需要您登录一下，默认为手机号验证码登录。使用邮箱登录点击下方切换
             </p>
             <Button
               className={classnames(styles.switch_button, styles.button, styles['switch-btn'])}
@@ -174,10 +174,10 @@ const Login = () => {
         ) : (
           <div className={classnames(styles.switch_container, styles['right-panel-active'])} id='switch-c2'>
             <div className={classnames(styles.switch_title, styles.title)} style={{ letterSpacing: 0 }}>
-              你好，新朋友
+              您好，招聘官
             </div>
             <p className={classnames(styles.switch_description, styles.description)}>
-              或者，你习惯使用手机号登录？点击下方切换！
+              出于隐私保护，查看简历需要您登录一下，当前为为邮箱验证码登录。使用手机登录点击下方切换
             </p>
             <Button
               className={classnames(styles.switch_button, styles.button, styles['switch-btn'])}
