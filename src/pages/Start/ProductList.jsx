@@ -11,18 +11,6 @@ const ProductList = () => {
       href: '/wallpaper',
     },
     {
-      key: 5,
-      imgUrl: '/article.svg',
-      title: '文章',
-      href: '/article',
-    },
-    {
-      key: 2,
-      imgUrl: '/music.svg',
-      title: '音乐',
-      href: '/music',
-    },
-    {
       key: 4,
       imgUrl: '/card.svg',
       title: '卡片',
@@ -31,6 +19,26 @@ const ProductList = () => {
 
     {
       key: 3,
+      imgUrl: '/note.svg',
+      title: '笔记',
+      href: '/note',
+    },
+    {
+      key: 2,
+      imgUrl: '/music.svg',
+      title: '音乐',
+      href: '/music',
+    },
+
+    {
+      key: 5,
+      imgUrl: '/article.svg',
+      title: '文章',
+      href: '/article',
+    },
+
+    {
+      key: 6,
       imgUrl: '/resume.svg',
       title: '简历',
       href: '/resume',

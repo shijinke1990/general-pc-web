@@ -10,7 +10,7 @@ const Start = () => {
       <ProductList></ProductList>
       <div className={styles.beiAn}>
         <a href='http://beian.miit.gov.cn' target='_blank' rel='noopener noreferrer'>
-          88888
+          备案号：鄂ICP备14002884号-6
         </a>
       </div>
     </div>

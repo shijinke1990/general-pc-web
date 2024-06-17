@@ -18,6 +18,7 @@ export default function Card() {
   };
   useEffect(() => {
     handleLoad();
+    document.title = '卡片 - 恋恋不舍';
   }, []);
 
   const randomCard = () => {
