@@ -4,6 +4,7 @@ import ProductList from './ProductList';
 import styles from './index.module.scss';
 
 const Start = () => {
+  document.title = '首页 - 恋恋不舍';
   return (
     <div className={styles.start}>
       <img className={styles.logo} src='/logo.png' alt='logo' />

@@ -1,0 +1,47 @@
+$speed: 10s;
+$wordCount: 5;
+
+.g-container {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    background-color: #1b2128;
+    font-family: 'Montserrat', sans-serif;
+    color: #fff;
+    font-size: 32px;
+    filter: contrast(15);
+}
+
+.word {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation: change $speed infinite ease-in-out;
+    line-height: 1.8;
+    text-align: center;
+    //字间距
+    letter-spacing: 0.2em;
+
+    @for $i from 0 to $wordCount {
+        &:nth-child(#{$i + 1}) {
+            animation-delay: ($speed / ($wordCount) * $i) - $speed;
+        }
+    }
+}
+
+@keyframes change {
+
+    0%,
+    5%,
+    100% {
+        filter: blur(0px);
+        opacity: 1;
+    }
+
+    50%,
+    80% {
+        filter: blur(80px);
+        opacity: 0;
+    }
+}

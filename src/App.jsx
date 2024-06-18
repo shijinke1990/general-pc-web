@@ -3,14 +3,14 @@ import { RouterProvider } from 'react-router-dom';
 import routerConfig from './router';
 import './assets/reset.css';
 import './assets/App.scss';
+import { ConfigProvider } from 'antd';
+import zhCN from 'antd/lib/locale/zh_CN';
 
 function App() {
-  // 获取浏览器指纹
-
   return (
-    <div className='App'>
+    <ConfigProvider locale={zhCN}>
       <RouterProvider router={routerConfig}></RouterProvider>
-    </div>
+    </ConfigProvider>
   );
 }
 
