@@ -30,12 +30,12 @@ const ProductList = () => {
       href: '/music',
     },
 
-    {
-      key: 5,
-      imgUrl: '/article.svg',
-      title: '文章',
-      href: '/article',
-    },
+    // {
+    //   key: 5,
+    //   imgUrl: '/article.svg',
+    //   title: '文章',
+    //   href: '/article',
+    // },
 
     {
       key: 6,

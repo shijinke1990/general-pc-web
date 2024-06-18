@@ -45,6 +45,7 @@ const Music = () => {
   const [active, setActive] = useState(0);
 
   useEffect(() => {
+    document.title = '音乐 - 恋恋不舍';
     load()
       .then(res => {
         const { list } = res;
