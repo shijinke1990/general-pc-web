@@ -10,6 +10,8 @@ import Resume from '@pages/resume';
 import Article from '@pages/article';
 import ArticleDetail from '@pages/article/ArticleDetail';
 import Note from '@pages/note';
+import ConfirmCompany from '@pages/resume/ConfirmCompany';
+import AuthLoader from './AuthLoader';
 const router = createBrowserRouter([
   {
     path: '/',
@@ -52,11 +54,13 @@ const router = createBrowserRouter([
     element: <Card />,
   },
   {
+    id: 'resume',
     path: '/resume',
-    element: <Login />,
+    loader: AuthLoader,
+    element: <ConfirmCompany />,
   },
   {
-    path: '/resume/:id',
+    path: '/resumes/:id',
     element: <Resume />,
   },
   {

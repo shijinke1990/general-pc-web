@@ -12,7 +12,7 @@ import Website from '@assets/icons/website.svg?react';
 import html2canvas from 'html2canvas';
 import CopyText from '@components/CopyText';
 import { jsPDF } from 'jspdf';
-import { loadOne } from '@services/resumes';
+import { loadDetail } from '@services/resumes';
 import { useParams } from 'react-router-dom';
 
 export default function Resume() {
@@ -55,12 +55,12 @@ export default function Resume() {
       };
       addImageToPage();
       checkPageOverflow();
-      pdf.save('download.pdf');
+      pdf.save(resume.title + '.pdf');
     });
   };
 
   useEffect(() => {
-    loadOne({ _id: id }).then(res => {
+    loadDetail({ _id: id }).then(res => {
       console.log(res);
       setResume(res.resume);
     });
@@ -79,7 +79,7 @@ export default function Resume() {
             <div className={styles.profile}>
               {resume.avatar && (
                 <div className={styles.avatar}>
-                  <Image
+                  <img
                     src={resume.avatar}
                     style={{
                       width: '120px',

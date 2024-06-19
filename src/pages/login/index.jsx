@@ -4,15 +4,23 @@ import classnames from 'classnames';
 import { Button, Form, Input } from 'antd';
 import { generatePhoneCode, generateEmailCode, loginViaPhone, loginViaEmail } from '@services/users';
 import { useNavigate } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
+import { useEffect } from 'react';
 
 const Login = () => {
+  const location = useLocation();
   const [isSignIn, setIsSignIn] = useState(true);
   const [seconds, setSeconds] = useState(0);
   const [form] = Form.useForm();
+  const queryParams = new URLSearchParams(location.search);
   const navigateTo = useNavigate();
   const switchForm = () => {
     setIsSignIn(!isSignIn);
   };
+
+  useEffect(() => {
+    document.title = '登录 - 恋恋不舍';
+  }, []);
 
   const handleGenerateCode = async () => {
     const values = form.getFieldsValue();
@@ -36,19 +44,22 @@ const Login = () => {
   };
 
   const handleLogin = async e => {
+    e.preventDefault();
     const values = form.getFieldsValue();
     if (values.phone && values.verificationCode) {
       const res = await loginViaPhone(values);
-      console.log('res', res);
       const { token } = res;
       localStorage.setItem('token', token);
-      navigateTo('/');
     }
     if (values.email && values.verificationCode) {
       const res = await loginViaEmail(values);
       console.log('res', res);
       const { token } = res;
       localStorage.setItem('token', token);
+    }
+    if (queryParams.get('redirect')) {
+      window.location.href = queryParams.get('redirect');
+    } else {
       navigateTo('/');
     }
   };

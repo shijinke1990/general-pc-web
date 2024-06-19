@@ -1,6 +1,6 @@
 import request from '../utils/request';
 
-export const load = async data => {
+export const find = async data => {
   return request({
     method: 'get',
     url: '/resumes',
@@ -8,10 +8,10 @@ export const load = async data => {
   });
 };
 
-export const loadOne = async data => {
+export const loadDetail = async data => {
   return request({
     method: 'get',
-    url: `/resumes/${data._id}`,
+    url: `/resumes/${data._id}/detail`,
   });
 };
 

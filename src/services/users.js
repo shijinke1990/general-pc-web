@@ -51,6 +51,6 @@ export const loginViaEmail = async data => {
 export const getUserInfo = async data => {
   return request({
     method: 'get',
-    url: `/users/${data.userId}`,
+    url: `/users/@/userInfo`,
   });
 };
