@@ -13,6 +13,9 @@ const Start = () => {
         <a href='http://beian.miit.gov.cn' target='_blank' rel='noopener noreferrer'>
           备案号：鄂ICP备14002884号-6
         </a>
+        <a href='https://www.boluobo.com' target='_blank' rel='noopener noreferrer'>
+          友情链接：菠萝卜
+        </a>
       </div>
     </div>
   );
