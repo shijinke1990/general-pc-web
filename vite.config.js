@@ -70,24 +70,15 @@ export default defineConfig(({ mode }) => {
             'react-vendor': ['react', 'react-dom', 'react-router-dom'],
             // 将组件库的代码打包
             library: ['antd', '@ant-design/icons'],
-            echarts: ['echarts'],
             axios: ['axios'],
-            aliOss: ['ali-oss'],
           },
           chunkFileNames: chunkInfo => {
             const facadeModuleId = chunkInfo.facadeModuleId ? chunkInfo.facadeModuleId.split('/') : [];
             const fileName = facadeModuleId[facadeModuleId.length - 2] || '[name]';
             if (
-              [
-                'axios',
-                'echarts',
-                '@ant-design/icons',
-                'antd',
-                'react',
-                'react-dom',
-                'react-router-dom',
-                'aliOss',
-              ].includes(chunkInfo.name)
+              ['axios', '@ant-design/icons', 'antd', 'react', 'react-dom', 'react-router-dom', 'aliOss'].includes(
+                chunkInfo.name
+              )
             ) {
               return `js/${fileName}/[name].js`;
             }
