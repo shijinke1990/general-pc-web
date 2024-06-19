@@ -5,7 +5,7 @@ import axios from 'axios';
 import { message } from 'antd';
 
 const service = axios.create({
-  baseURL: process.env.NODE_ENV === 'development' ? '/api' : 'https://demo.com/api',
+  baseURL: process.env.NODE_ENV === 'development' ? '/api' : 'https://api.lianlianbushe.com',
   timeout: 8000,
 });
 
