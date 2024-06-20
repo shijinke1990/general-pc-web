@@ -179,3 +179,11 @@ rm -rf /usr/share/nginx/html/lianlianbushe.com
 ```shell
 scp -r ./dist blb:/usr/share/nginx/html/lianlianbushe.com
 ```
+
+## 更新 nginx 配置
+
+```shell
+ssh blb
+scp ./nginx.conf blb:/etc/nginx/nginx.conf
+systemctl restart nginx
+```
