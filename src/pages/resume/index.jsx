@@ -77,26 +77,24 @@ export default function Resume() {
         <div className={styles.body}>
           <div className={styles.wrapper} id='wrapper'>
             <div className={styles.profile}>
-              {resume.avatar && (
-                <div className={styles.avatar}>
-                  <img
-                    src={resume.avatar}
-                    style={{
-                      width: '120px',
-                      height: '120px',
-                      borderRadius: '50%',
-                      objectFit: 'cover',
-                    }}
-                    alt='avatar'
-                  />
-                </div>
-              )}
+              <div className={styles.avatar}>
+                <img
+                  src='/avatar.png'
+                  style={{
+                    width: '120px',
+                    height: '120px',
+                    borderRadius: '50%',
+                    objectFit: 'cover',
+                  }}
+                  alt='avatar'
+                />
+              </div>
+
               {resume.nickName && (
                 <div className={styles.nickname}>
                   <Tooltip placement='top' title='姓名'>
                     <div>{resume.nickName}</div>
                   </Tooltip>
-
                   {resume.state && (
                     <div className={styles.state}>
                       <span>（{resume.state}）</span>
