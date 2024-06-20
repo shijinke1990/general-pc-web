@@ -33,22 +33,23 @@
     .beiAn {
 
         display: flex;
-
-
-        color: #fff;
         padding: 20px;
         justify-content: space-around;
         align-items: center;
         gap: 60px;
         z-index: 9;
 
-        a {
+
+        .link {
             text-decoration: none;
-            color: #EEE;
+            color: rgba(255, 255, 255, 0.7);
             font-size: 18px;
+            //文字描边
+            -webkit-text-stroke: 4px rgba(0, 0, 0, 0.2);
 
             &:hover {
                 color: #fff;
+                -webkit-text-stroke: 1px rgba(0, 0, 0, 0.1);
             }
         }
     }
