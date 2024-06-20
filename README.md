@@ -1,8 +1,8 @@
 # 删除服务器旧的代码
 
 ```shell
-cd /usr/share/nginx/html/
-rm -rf lianlianbushe.com
+ssh blb
+rm -rf  /usr/share/nginx/html/lianlianbushe.com
 ```
 
 ## 复制代码到服务器
