@@ -8,6 +8,7 @@ export default function Note() {
   const [list, setList] = useState([]);
 
   useEffect(() => {
+    document.title = '笔记 - 恋恋不舍';
     load().then(res => {
       console.log('res', res);
       setList(res.list);
