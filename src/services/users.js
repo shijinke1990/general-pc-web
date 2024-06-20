@@ -1,12 +1,5 @@
 import request from '../utils/request';
 
-// router.patch('/:id', accountAuth, checkUserExist, update);
-// router.get('/:phone/code', generatePhoneCode);
-// router.get('/:email/code', generateEmailCode);
-// router.post('/@/loginViaPhone', checkPhoneValidity, checkPhoneCode, login);
-// router.post('/@/loginViaEmail', checkEmailValidity, checkEmailCode, login);
-// router.get('/:userId', userAuth, getUserInfo);
-
 export const load = async data => {
   return request({
     method: 'get',
