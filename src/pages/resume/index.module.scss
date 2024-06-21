@@ -174,21 +174,16 @@
                     gap: 4px;
                 }
 
-
                 .header {
                     display: flex;
                     font-family: 'Courier New', serif, fantasy, sans-serif，monospace，Courier, monospace;
                     justify-content: space-between;
-
-
-
+                    font-size: 16px;
                 }
 
-
                 .label {
-
-                    font-weight: 400;
-
+                    font-size: 14px;
+                    font-weight: bold;
                 }
 
                 .description {

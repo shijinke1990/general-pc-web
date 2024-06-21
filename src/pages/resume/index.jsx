@@ -95,11 +95,11 @@ export default function Resume() {
                   <Tooltip placement='top' title='姓名'>
                     <div>{resume.nickName}</div>
                   </Tooltip>
-                  {resume.state && (
+                  {/* {resume.state && (
                     <div className={styles.state}>
                       <span>（{resume.state}）</span>
                     </div>
-                  )}
+                  )} */}
                 </div>
               )}
 
