@@ -63,6 +63,7 @@ export default function Resume() {
     loadDetail({ _id: id }).then(res => {
       console.log(res);
       setResume(res.resume);
+      document.title = res.resume.title + '-简历_恋恋不舍';
     });
   }, []);
 
@@ -272,6 +273,24 @@ export default function Resume() {
                         <div className={styles.company}>{item.school}</div>
                       </div>
                       <div className={styles.label}>{item.major}</div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+            {resume?.patentExperience?.length > 0 && (
+              <div className={styles.experiences}>
+                <div className={styles.title}>专利经历</div>
+                <div className={styles.content}>
+                  {resume?.patentExperience.map((item, index) => (
+                    <div className={styles.item} key={index}>
+                      <div className={styles.header}>
+                        <div className={styles.time}>
+                          {item.patentName}『{item.category}』
+                        </div>
+                        <div className={styles.company}>{item.state}</div>
+                      </div>
+                      <div className={styles.label}>{item.role}</div>
                     </div>
                   ))}
                 </div>
