@@ -22,7 +22,7 @@ export default function Resume() {
   const downloadResume = () => {
     const wrapper = document.getElementById('wrapper');
     const options = {
-      scale: 3,
+      scale: 2,
       useCORS: true,
       allowTaint: true,
       logging: true,
