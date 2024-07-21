@@ -45,7 +45,7 @@ const ConfirmCompany = () => {
       >
         <Form.Item name='company'>
           <Input
-            placeholder='在此贵公司在招聘软件上的名称'
+            placeholder='在此输入贵公司在招聘软件上的名称'
             className={styles.input}
             autoFocus
             onChange={e => getPanelValue(e.target.value)}
