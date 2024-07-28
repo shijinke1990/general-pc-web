@@ -159,9 +159,9 @@ export default function ThreeJS() {
 
     // 加载纹理
     const textureLoader = new THREE.TextureLoader();
-    const texture = textureLoader.load('/public/test.webp');
-    const normalTexture = textureLoader.load('/public/c3.jpeg');
-    const aoMapTexture = textureLoader.load('/public/c13.png');
+    const texture = textureLoader.load('/test.webp');
+    const normalTexture = textureLoader.load('/c3.jpeg');
+    const aoMapTexture = textureLoader.load('/c13.png');
 
     const material = new THREE.MeshPhysicalMaterial({
       map: texture,
