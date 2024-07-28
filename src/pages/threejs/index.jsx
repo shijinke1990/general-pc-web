@@ -204,8 +204,18 @@ export default function ThreeJS() {
 
     animate();
 
+    const handleResize = () => {
+      camera.aspect = window.innerWidth / window.innerHeight;
+      camera.updateProjectionMatrix();
+      renderer.setSize(window.innerWidth, window.innerHeight);
+    };
+
+    // 处理窗口大小调整
+    window.addEventListener('resize', handleResize);
+
     // 清理函数
     return () => {
+      window.removeEventListener('resize', handleResize);
       mountRef.current.removeChild(renderer.domElement);
     };
   }, []); // 空数组作为依赖，确保只执行一次
