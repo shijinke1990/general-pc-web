@@ -11,6 +11,8 @@ import Article from '@pages/article';
 import ArticleDetail from '@pages/article/ArticleDetail';
 import Note from '@pages/note';
 import ConfirmCompany from '@pages/resume/ConfirmCompany';
+import ThreeJS from '../pages/threejs';
+
 import AuthLoader from './AuthLoader';
 const router = createBrowserRouter([
   {
@@ -74,6 +76,10 @@ const router = createBrowserRouter([
   {
     path: '/note',
     element: <Note />,
+  },
+  {
+    path: '/threejs',
+    element: <ThreeJS />,
   },
   {
     path: '/404',
